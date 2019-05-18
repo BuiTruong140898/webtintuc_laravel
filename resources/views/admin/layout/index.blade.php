@@ -7,7 +7,7 @@
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
     <meta name="author" content="">
     <title>Admin - Khoa Phạm</title>
-
+    <base href="{{ asset('') }}">
     <!-- Bootstrap Core CSS -->
     <link href="admin_asset/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -44,20 +44,20 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script arc="admin_asset/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="admin_asset/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script arc="admin_asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="admin_asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script arc="admin_asset/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="admin_asset/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script arc="admin_asset/dist/js/sb-admin-2.js"></script>
+    <script src="admin_asset/dist/js/sb-admin-2.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script arc="admin_asset/bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
-    <script arc="admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="admin_asset/bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script src="admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
