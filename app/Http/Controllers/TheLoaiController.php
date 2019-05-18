@@ -58,5 +58,11 @@ class TheLoaiController extends Controller
         $theloai->save();
         return redirect('admin/theloai/sua/'.$id)->with('thongbao','Sua thanh cong');
     }
+
+    public function getXoa($id){
+        $theloai = TheLoai::find($id);
+        $theloai->delete();
+        return redirect('admin/theloai/danhsach')->with('thongbao','Ban da xoa mot truong thanh cong');
+    }
 }
 
