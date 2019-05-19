@@ -26,18 +26,22 @@
                     @endif
                     {{--#thong bao loi--}}
                     <form action="admin/loaitin/sua/{{$loaitin->id}}" method="POST">
-                        <input type="hidden" name="_token" value="csrf_token()">                        
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">                        
                         <div class="form-group">
-                            <label>Tên thể loại</label>
-                            <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
-                        </div>
-                        <div class="form-group">
-                            <label>Tên không dấu</label>
-                            <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
-                        </div>
+                            <label>Tên loại tin</label>
+                            <input class="form-control" name="Ten" value="{{$loaitin->Ten}}" placeholder="Please Enter Category Name" />
+                        </div>                        
                         <div class="form-group">
                             <label>Thể loại</label>
-                            <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
+                            <select name="idTheLoai" class="form-control" id="">
+                                @foreach($cactheloai as $tl)
+                                    <option 
+                                    @if($loaitin->idTheLoai == $tl->id)
+                                        selected
+                                    @endif
+                                    value="{{$tl->id}}">{{$tl->Ten}}</option>
+                                @endforeach
+                            </select>
                         </div>                        
                         <button type="submit" class="btn btn-default">Edit</button>
                         <button type="reset" class="btn btn-default">Reset</button>

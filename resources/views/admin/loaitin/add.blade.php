@@ -26,18 +26,22 @@
                         @endif
                         {{-- #thong bao loi --}}
                         <form action="admin/loaitin/them" method="POST">
-                        <input type="hidden" name="_token" value="csrf_token()">                        
-                        <div class="form-group">
-                            <label>Tên thể loại</label>
-                            <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
-                        </div>                        
-                        <div class="form-group">
-                            <label>Thể loại</label>
-                            <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
-                        </div>                        
-                        <button type="submit" class="btn btn-default">Add</button>
-                        <button type="reset" class="btn btn-default">Reset</button>
-                    <form>
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">                        
+                            <div class="form-group">
+                                <label>Tên loại tin</label>
+                                <input class="form-control" name="Ten" placeholder="Please Enter Category Name" />
+                            </div>                        
+                            <div class="form-group">
+                                <label>Thể loại</label>
+                                <select name="idTheLoai" class="form-control" id="">
+                                    @foreach($cactheloai as $tl)
+                                        <option value="{{$tl->id}}">{{$tl->Ten}}</option>
+                                    @endforeach
+                                </select>
+                            </div>                        
+                            <button type="submit" class="btn btn-default">Add</button>
+                            <button type="reset" class="btn btn-default">Reset</button>
+                        <form>
                     </div>
                 </div>
                 <!-- /.row -->

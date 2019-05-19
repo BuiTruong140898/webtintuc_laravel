@@ -16,10 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('test', function(){
-	return view('admin.theloai.list');
-});
-
 Route::group(['prefix'=>'admin'], function(){
 	Route::group(['prefix'=>'theloai'],function(){
 		Route::get('danhsach','TheLoaiController@getDanhSach');
