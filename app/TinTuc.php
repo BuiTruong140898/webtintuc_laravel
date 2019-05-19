@@ -1,6 +1,4 @@
-    protected $table = "Comment"
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -17,3 +15,5 @@ class TinTuc extends Model
     	return $this->hasMany('App\Comment','idTinTuc','id');
     }
 }
+
+
