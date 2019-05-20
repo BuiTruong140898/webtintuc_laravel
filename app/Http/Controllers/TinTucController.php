@@ -10,6 +10,8 @@ use App\TheLoai;
 
 use App\LoaiTin;
 
+use App\Comment;
+
 class TinTucController extends Controller
 {
     public function getDanhSach(){
@@ -77,6 +79,7 @@ class TinTucController extends Controller
     }
 
     public function postSua(Request $req, $id){
+        
         $tintuc = TinTuc::find($id);
         $this->validate($req,[
             'LoaiTin'=>'required',

@@ -48,6 +48,9 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::get('loaitin/{idtheloai}','AjaxController@getLoaiTin');
 	});
 
+	Route::group(['prefix'=>'comment'],function(){
+		Route::get('xoa/{id}/{idTinTuc}','CommentController@getxoa');
+	});
 
 });
 
