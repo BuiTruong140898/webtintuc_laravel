@@ -10,6 +10,13 @@
                     </h1>
                 </div>
                 <!-- /.col-lg-12 -->
+                {{-- Thong bao xoa --}}
+                    @if(Session('thongbao'))
+                        <div class="alert alert-success">
+                            {{Session('thongbao')}}
+                        </div>
+                    @endif
+                {{-- #Thong bao xoa --}}
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr align="center">
