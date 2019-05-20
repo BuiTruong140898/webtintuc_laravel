@@ -5,46 +5,75 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">Tin Tức
                             <small>Add</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="" method="POST">
+                        {{-- Thong bao loi --}}
+                        @if(count($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    {{$err}}<br>
+                                @endforeach
+                            </div>
+                        @endif
+                        @if(Session('thongbao'))
+                            <div class="alert alert-success">
+                                {{Session('thongbao')}}
+                            </div>
+                        @endif
+                        {{-- #thong bao loi --}}
+                        <form action="admin/tintuc/them" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
-                                <label>Category Parent</label>
-                                <select class="form-control">
-                                    <option value="0">Please Choose Category</option>
-                                    <option value="">Tin Tức</option>
+                                <label>Thể loại</label>
+                                <select class="form-control" name="TheLoai" id="TheLoai">
+                                    @foreach($cactheloai as $tl)
+                                        <option value="{{$tl->id}}">{{$tl->Ten}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                                <label>Loai tin</label>
+                                <select class="form-control" name="LoaiTin" id="LoaiTin">
+                                    @foreach($cacloaitin as $lt)
+                                        <option value="{{$lt->id}}">{{$lt->Ten}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
+                                <label>Tiêu đề</label>
+                                <input class="form-control" name="TieuDe" placeholder="Please Enter Category Name" />
                             </div>
                             <div class="form-group">
-                                <label>Category Keywords</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
+                                <label>Tóm tắt</label>
+                                <textarea id="TomTat" class="form-control ckeditor" name="TomTat" placeholder="Please Enter Category Order"> </textarea>
                             </div>
                             <div class="form-group">
-                                <label>Category Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <label>Nội dung</label>
+                               <textarea id="NoiDung" class="form-control ckeditor" name="NoiDung" placeholder="Please Enter Category Order"> </textarea>
                             </div>
                             <div class="form-group">
-                                <label>Category Status</label>
+                                <label>Hình ảnh</label>
+                                <input class="form-control" type="file" name="Hinh">
+                            </div>
+                            @if(Session('loi'))
+                            <div class="alert alert-danger">
+                                {{Session('loi')}}
+                            </div>
+                        @endif
+                            <div class="form-group">
+                                <label>Nổi bật</label>
                                 <label class="radio-inline">
-                                    <input name="rdoStatus" value="1" checked="" type="radio">Visible
+                                    <input name="NoiBat" value="1" checked="" type="radio">Có
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="rdoStatus" value="2" type="radio">Invisible
+                                    <input name="NoiBat" value="0" type="radio">Không
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-default">Category Add</button>
+                            <button type="submit" class="btn btn-default">Add</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>
@@ -54,4 +83,17 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#TheLoai').change(function(){
+                var idTheLoai = $(this).val();
+                $.get("admin/ajax/loaitin/"+idTheLoai,function(data){
+                    $("#LoaiTin").html(data);
+                });
+            });
+        });
+    </script>
 @endsection

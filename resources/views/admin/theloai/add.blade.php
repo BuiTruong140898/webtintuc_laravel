@@ -11,7 +11,6 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-
                         {{-- Thong bao loi --}}
                         @if(count($errors) > 0)
                             <div class="alert alert-danger">
