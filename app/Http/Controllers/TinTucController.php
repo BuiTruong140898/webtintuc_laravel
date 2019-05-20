@@ -22,7 +22,7 @@ class TinTucController extends Controller
     public function getThem(){
         $cactheloai = TheLoai::all();
         $cacloaitin = LoaiTin::all();
-        return view('admin/tintuc/add',compact('cacloaitin','cactheloai'));
+        return view('admin.tintuc.add',compact('cacloaitin','cactheloai'));
     }
 
     public function postThem(Request $req){
