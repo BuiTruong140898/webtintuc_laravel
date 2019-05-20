@@ -33,7 +33,7 @@
                                 @if($user->quyen==1)
                                     Admin
                                 @else
-                                    User
+                                    Member
                                 @endif
                             </td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/user/xoa/{{$user->id}}">Delete</a></td>
