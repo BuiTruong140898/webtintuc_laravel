@@ -15,19 +15,20 @@ class AdminLoginMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    // public function handle($request, Closure $next)
-    // {
-    //     if(Auth::check()){
-    //         if($user->quyen == 1){
-    //             return $next($request);
-    //         }
-    //         else{
-    //             return redirect('admin/dangnhap');
-    //         }
-    //     }
-    //     else{
-    //         return redirect('admin/dangnhap');
-    //     }
-    // }
+    public function handle($request, Closure $next)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if($user->quyen == 1){
+                return $next($request);
+            }
+            else{
+                return redirect('admin/dang-nhap');
+            }
+        }
+        else{
+            return redirect('admin/dang-nhap');
+        }
+    }
 
 }

@@ -15,11 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('admin/dang-nhap','UserController@getDangNhapAdmin');
-// Route::post('admin/dang-nhap','UserController@postDangNhapAdmin');
-// Route::get('admin/dang-xuat','UserController@getDangXuatAdmin');
+Route::get('admin/dang-nhap','UserController@getDangNhapAdmin');
+Route::post('admin/dang-nhap','UserController@postDangNhapAdmin');
+Route::get('admin/dang-xuat','UserController@getDangXuatAdmin');
 
-Route::group(['prefix'=>'admin'/*,'middleware'=>'adminLogin'*/], function(){
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 	Route::group(['prefix'=>'theloai'],function(){
 		Route::get('danhsach','TheLoaiController@getDanhSach');
 		Route::get('sua/{id}','TheLoaiController@getSua');
