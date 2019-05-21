@@ -33,16 +33,16 @@
                             <input class="form-control" name="name" placeholder="Please Enter Username" />
                         </div>
                         <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Please Enter Email" />
+                        </div>
+                        <div class="form-group">
                             <label>Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Please Enter Password" />
                         </div>
                         <div class="form-group">
                             <label>RePassword</label>
                             <input type="password" class="form-control" name="repassword" placeholder="Please Enter RePassword" />
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="Please Enter Email" />
                         </div>
                         <div class="form-group">
                             <label>User Level</label>

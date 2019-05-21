@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\User;
 
+use App\Comment;
+
 class UserController extends Controller
 {
     // public function getDangNhapAdmin(){
@@ -79,6 +81,53 @@ class UserController extends Controller
         $user->save();
 
         return redirect('admin/user/them')->with('thongbao','Them user thanh cong');
+    }
 
+    public function getSua($id){
+        $user = User::find($id);
+        return view('admin.user.edit',compact('user'));
+    }
+
+    public function postSua(Request $req,$id){
+        $this->validate($req,[
+            'name'=>'required',
+        ],[
+            'name.required'=>'Vui long nhap ten',
+            'name.min'=>'Ten nguoi dung phai co it nhat 3 ki tu',
+        ]);
+
+        $user = User::find($id);
+        $user->name = $req->name;
+        $user->quyen = $req->quyen;
+
+        if($req->changePassword == 'on')
+        {
+             $this->validate($req,[
+            'password'=>'required|min:6|max:32',
+            'repassword'=>'required|same:password',
+        ],[
+            'password.required'=>'Vui long nhap mat khau',
+            'password.min'=>'Vui long nhap mat khau toi thieu 6 ki tu',
+            'password.max'=>'Vui long nhap password toi da 32 ki tu',
+            'repassword.required'=>'Vui long nhap xac nhan mat khau',
+            'repassword.same'=>'Mat khau xac nhan chua khop'   
+        ]);
+             $user->password = bcrypt('$req->password');
+        }
+
+        $user->save();
+
+        return redirect('admin/user/sua/'.$id)->with('thongbao','Sua user thanh cong');
+    }
+
+    function getXoa($id){
+        $user = User::find($id);
+        //Xoa het cac comment truoc khi xoa user
+        foreach($user->comment as $comment)
+        {
+            $comment->delete();
+        }
+        $user->delete();
+        return redirect('admin/user/danhsach')->with('thongbao','Xoa mot user thanh cong');
     }
 }
