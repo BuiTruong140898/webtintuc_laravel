@@ -28,9 +28,9 @@
 			            		<!-- item -->
 							    <div class="row-item row">
 				                	<h3>
-				                		<a href="">{{$tl->Ten}}</a> | 
+				                		<a href="loaitin/{{$tl->id}}/{{$tl->TenKhongDau}}.html">{{$tl->Ten}}</a> | 
 				                		@foreach($tl->loaitin as $lt)	
-					                		<small><a href=""><i>{{$lt->Ten}}</i></a>/</small>
+					                		<small><a href="loaitin/{{$tl->id}}/{{$lt->TenKhongDau}}.html"><i>{{$lt->Ten}}</i></a>/</small>
 				                		@endforeach
 				                	</h3>
 				                	<?php 
@@ -47,7 +47,7 @@
 					                    <div class="col-md-7">
 					                        <h3>{{$tin1['TieuDe']}}</h3>
 					                        <p>{{$tin1['TomTat']}}</p>
-					                        <a class="btn btn-primary" href="detail.html">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+					                        <a class="btn btn-primary" href="detail.html">Xem thêm <span class="glyphicon glyphicon-chevron-right"></span></a>
 										</div>
 
 				                	</div>
