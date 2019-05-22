@@ -22,6 +22,7 @@ class PageController extends Controller
 
     function trangchu()
     {
+        
     	return view('page.trangchu');
     }
 
