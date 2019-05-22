@@ -39,4 +39,12 @@ class PageController extends Controller
         $tintuc = TinTuc::where('idLoaiTin',$id)->paginate(5);
         return view('page.loaitin',compact('loaitin','tintuc'));
     }
+
+    function chitiettin($id)
+    {
+        $tintuc = TinTuc::find($id);
+        $tinnoibat = TinTuc::where('NoiBat','1')->take(4)->get();
+        $tinlienquan = TinTuc::where('idLoaiTin',$tintuc->idLoaiTin)->take(4)->get();
+        return view('page.chitiettin',compact('tintuc','tinnoibat','tinlienquan'));
+    }
 }

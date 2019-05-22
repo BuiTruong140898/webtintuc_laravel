@@ -69,5 +69,6 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 Route::get('trangchu','PageController@trangchu');
 Route::get('lienhe','PageController@lienhe');
 Route::get('loaitin/{id}/{TenKhongDau}.html','PageController@loaitin');
+Route::get('chitiettin/{id}/{TenKhongDau}.html','PageController@chitiettin');
 
 
