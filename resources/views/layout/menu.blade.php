@@ -4,7 +4,7 @@
         	Menu
         </li>
     	@foreach($theloai as $tl)
-	        <li href="#" class="list-group-item menu1">
+	        <li  class="list-group-item menu1">
 	        	{{$tl->Ten}}
 	        </li>
 	        <ul>

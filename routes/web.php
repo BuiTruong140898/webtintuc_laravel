@@ -71,4 +71,6 @@ Route::get('lienhe','PageController@lienhe');
 Route::get('loaitin/{id}/{TenKhongDau}.html','PageController@loaitin');
 Route::get('chitiettin/{id}/{TenKhongDau}.html','PageController@chitiettin');
 
-
+Route::get('dangnhap','UserController@getDangNhap');
+Route::post('dangnhap','UserController@postDangNhap');
+Route::get('dangxuat','UserController@dangxuat');

@@ -29,22 +29,26 @@
 		    </form>
 
 		    <ul class="nav navbar-nav pull-right">
-                <li>
-                    <a href="#">Đăng ký</a>
-                </li>
-                <li>
-                    <a href="#">Đăng nhập</a>
-                </li>
-                <li>
-                	<a>
-                		<span class ="glyphicon glyphicon-user"></span>
-                		Bùi Đức Phú
-                	</a>
-                </li>
+                @if(Auth::check())
+                    <li>
+                        <a>
+                            <span class ="glyphicon glyphicon-user"></span>
+                            {{Auth::user()->name}}
+                        </a>
+                    </li>
 
-                <li>
-                	<a href="#">Đăng xuất</a>
-                </li>
+                    <li>
+                        <a href="dangxuat">Đăng xuất</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="">Đăng ký</a>
+                    </li>
+                    <li>
+                        <a href="dangnhap">Đăng nhập</a>
+                    </li>
+                @endif
+                
                 
             </ul>
         </div>

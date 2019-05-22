@@ -14,6 +14,41 @@ use App\Comment;
 
 class UserController extends Controller
 {
+    public function getDangNhap(){
+        return view('page.dangnhap');
+    }
+
+    public function postDangNhap(Request $req){
+        $this->validate($req,[
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:32'
+        ],[
+            'email.email' => 'Vui long nhap dung dinh dang mail',
+            'email.required' => 'Vui long nhap email',
+            'password.required' => 'Vui Long nhap mat khau',
+            'password.min' => "vui long dien mat khau toi thieu 3 ki tu, toi da 32 ki tu",
+            'password.max' => "vui long dien mat khau toi thieu 3 ki tu, toi da 32 ki tu",
+        ]);
+
+        if(Auth::attempt([
+            'email' => $req->email,
+            'password' => $req->password
+        ]))
+        {
+            return redirect('trangchu');
+        }
+        else
+        {
+            return redirect('dangnhap')->with('thongbao','Dang nhap khong thanh cong');
+        }
+
+    }
+
+    public function dangxuat(){
+        Auth()->logout();
+        return view('page.dangnhap');
+    }
+
     public function getDangNhapAdmin(){
     	return view('admin.login');
     }
@@ -29,7 +64,10 @@ class UserController extends Controller
     		'password.max'=>'Mat khau qua dai, vui long nhap toi da 32 ki tu'
     	]);
 
-    	if(auth::attempt(['email'=>$req->email,'password'=>$req->password]))
+    	if(auth::attempt([
+            'email'=>$req->email,
+            'password'=>$req->password
+        ]))
     	{
     		return redirect('admin/theloai/danhsach');
 	  	}
