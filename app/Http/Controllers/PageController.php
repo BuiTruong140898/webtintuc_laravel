@@ -48,5 +48,13 @@ class PageController extends Controller
         return view('page.chitiettin',compact('tintuc','tinnoibat','tinlienquan'));
     }
 
-   
+    function timkiem(Request $req)
+    {
+        $key = $req->key;
+        $tintuc = TinTuc::where('TieuDe','like','%'.$key.'%')->orWhere('TomTat','like',"%$key%")->paginate(5);
+
+        return view('page.timkiem',compact('tintuc','key'));
+
+    }
+
 }

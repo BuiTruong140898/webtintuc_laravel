@@ -21,9 +21,10 @@
                 </li>
             </ul>
 
-            <form class="navbar-form navbar-left" role="search">
-		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Search">
+            <form action="timkiem" method="POST" class="navbar-form navbar-left" role="search">
+		        <input type="hidden" name="_token" value="{{csrf_token()}}" >
+                <div class="form-group">
+		          <input type="text" class="form-control" name="key" id="key" placeholder="Search">
 		        </div>
 		        <button type="submit" class="btn btn-default">Submit</button>
 		    </form>

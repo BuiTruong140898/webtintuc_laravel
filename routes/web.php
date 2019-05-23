@@ -78,3 +78,5 @@ Route::get('dangxuat','UserController@dangxuat');
 Route::post('comment/{id}','CommentController@postComment');
 Route::get('thongtinnguoidung','UserController@getThongTinNguoiDung');
 Route::post('thongtinnguoidung','UserController@postThongTinNguoiDung');
+
+Route::post('timkiem','PageController@timkiem');
