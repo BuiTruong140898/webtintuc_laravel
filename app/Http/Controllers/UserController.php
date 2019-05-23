@@ -158,7 +158,7 @@ class UserController extends Controller
         return redirect('admin/user/sua/'.$id)->with('thongbao','Sua user thanh cong');
     }
 
-    function getXoa($id){
+    public function getXoa($id){
         $user = User::find($id);
         //Xoa het cac comment truoc khi xoa user
         foreach($user->comment as $comment)
@@ -168,4 +168,8 @@ class UserController extends Controller
         $user->delete();
         return redirect('admin/user/danhsach')->with('thongbao','Xoa mot user thanh cong');
     }
+
+    public function getThongTinNguoiDung(){
+        return  view('page.thongtin_nguoidung');
+    } 
 }

@@ -31,7 +31,7 @@
 		    <ul class="nav navbar-nav pull-right">
                 @if(Auth::check())
                     <li>
-                        <a>
+                        <a href="thongtinnguoidung">
                             <span class ="glyphicon glyphicon-user"></span>
                             {{Auth::user()->name}}
                         </a>

@@ -33,9 +33,13 @@
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Viết bình luận ...<span class="glyphicon glyphicon-pencil"></span></h4>
-                    <form role="form">
+                    @if(Session('thongbao'))
+                        <div class="alert alert-success">{{Session('thongbao')}}</div>
+                    @endif
+                    <form role="form" action="comment/{{$tintuc->id}}" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea name="NoiDung" class="form-control" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Gửi</button>
                     </form>
