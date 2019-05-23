@@ -32,7 +32,7 @@ class UserController extends Controller
 
         if(Auth::attempt([
             'email' => $req->email,
-            'password' => $req->password
+             'password' => $req->password
         ]))
         {
             return redirect('trangchu');
@@ -94,7 +94,7 @@ class UserController extends Controller
 
     public function postThem(Request $req){
         $this->validate($req,[
-            'name'=>'required',
+            'name'=>'required|min:3',
             'email'=>'required|email|unique:users,email',
             'password'=>'required|min:6|max:32',
             'repassword'=>'required|same:password',
@@ -128,7 +128,7 @@ class UserController extends Controller
 
     public function postSua(Request $req,$id){
         $this->validate($req,[
-            'name'=>'required',
+            'name'=>'required|min:3',
         ],[
             'name.required'=>'Vui long nhap ten',
             'name.min'=>'Ten nguoi dung phai co it nhat 3 ki tu',
@@ -138,9 +138,8 @@ class UserController extends Controller
         $user->name = $req->name;
         $user->quyen = $req->quyen;
 
-        if($req->changePassword == 'on')
-        {
-             $this->validate($req,[
+        if($req->changePassword == 'on'){
+            $this->validate($req,[
             'password'=>'required|min:6|max:32',
             'repassword'=>'required|same:password',
         ],[
@@ -150,7 +149,7 @@ class UserController extends Controller
             'repassword.required'=>'Vui long nhap xac nhan mat khau',
             'repassword.same'=>'Mat khau xac nhan chua khop'   
         ]);
-             $user->password = bcrypt('$req->password');
+             $user->password = bcrypt($req->password);
         }
 
         $user->save();
@@ -172,4 +171,36 @@ class UserController extends Controller
     public function getThongTinNguoiDung(){
         return  view('page.thongtin_nguoidung');
     } 
+
+    public function postThongTinNguoiDung(Request $req){
+        $this->validate($req,[
+            'name'=>'required|min:3',
+            
+        ],[
+            'name.required'=>'Vui long nhap ten',
+            'name.min'=>'Ten nguoi dung phai co it nhat 3 ki tu',
+        ]);
+
+        $user = Auth::user();
+        $user->name = $req->name;
+
+        if($req->changepassword == "on"){
+            $this->validate($req,[
+                'password'=>'required|min:6|max:32',
+                'repassword'=>'required|same:password',
+            ],[
+                'password.required'=>'Vui long nhap mat khau',
+                'password.min'=>'Vui long nhap mat khau toi thieu 6 ki tu',
+                'password.max'=>'Vui long nhap password toi da 32 ki tu',
+                'repassword.required'=>'Vui long nhap xac nhan mat khau',
+                'repassword.same'=>'Mat khau xac nhan chua khop'   
+            ]);
+            $user->password = bcrypt($req->password);
+        }
+
+        $user->save();
+
+        return redirect('thongtinnguoidung')->with('thongbao','Da thay doi thong tin thanh cong');
+
+    }
 }
