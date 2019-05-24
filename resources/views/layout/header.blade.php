@@ -43,7 +43,7 @@
                     </li>
                 @else
                     <li>
-                        <a href="">Đăng ký</a>
+                        <a href="dangky">Đăng ký</a>
                     </li>
                     <li>
                         <a href="dangnhap">Đăng nhập</a>

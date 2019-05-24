@@ -203,4 +203,40 @@ class UserController extends Controller
         return redirect('thongtinnguoidung')->with('thongbao','Da thay doi thong tin thanh cong');
 
     }
+
+    public function getDangKy(){
+        return view('page.dangky');
+    }
+
+    public function postDangKy(Request $req){
+        $this->validate($req,[
+            'name'=>'required|min:3',
+            'email'=>'required|email|unique:users,email',
+            'password'=>'required|min:6|max:32',
+            'repassword'=>'required|same:password',
+        ],[
+            'name.required'=>'Vui long nhap ten',
+            'name.min'=>'Ten nguoi dung phai co it nhat 3 ki tu',
+            'email.requires'=>'Vui lonh nhap email',
+            'email.email'=>'Vui long nhap email dung dinh dang',
+            'email.unique'=>'Email da ton tai',
+            'password.required'=>'Vui long nhap mat khau',
+            'password.min'=>'Vui long nhap mat khau toi thieu 6 ki tu',
+            'password.max'=>'Vui long nhap password toi da 32 ki tu',
+            'repassword.required'=>'Vui long nhap xac nhan mat khau',
+            'repassword.same'=>'Mat khau xac nhan chua khop'   
+        ]);
+
+        $user = new User;
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->password = bcrypt($req->password);
+        $user->quyen = 0;
+        $user->save();
+
+        return redirect('dangnhap')->with('thongbao','Ban da dang ky tai khoan thanh cong<br>Vui long dang nhap');
+    
+    }
 }
+
+

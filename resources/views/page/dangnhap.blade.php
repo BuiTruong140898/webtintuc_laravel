@@ -19,7 +19,7 @@
 						  	@endforeach
 				  		@endif
 				  		@if(Session('thongbao'))
-					  		<div class="alert alert-danger">{{Session('thongbao')}}</div>
+					  		<div class="alert alert-success">{!!Session('thongbao')!!}</div>
 				  		@endif
 				  		{{-- #thong bao --}}
 				    	<form action="dangnhap" method="POST">

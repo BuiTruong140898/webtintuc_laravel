@@ -80,3 +80,6 @@ Route::get('thongtinnguoidung','UserController@getThongTinNguoiDung');
 Route::post('thongtinnguoidung','UserController@postThongTinNguoiDung');
 
 Route::post('timkiem','PageController@timkiem');
+
+Route::get('dangky','UserController@getDangKy');
+Route::post('dangky','UserController@postDangKy');

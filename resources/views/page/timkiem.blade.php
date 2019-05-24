@@ -47,7 +47,10 @@
                 @endforeach
 
                 <!-- Pagination -->
-                <div class="row" style="text-align: center">{{$tintuc->links()}}</div>
+                 <div style="text-align: center;">
+                  {{-- {{$tintuc->links()}} --}}
+                  {{ $tintuc->appends(Request::all())->links() }}
+                </div>    
 
                 <!-- /.row -->
 
